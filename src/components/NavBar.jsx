@@ -1,4 +1,5 @@
 import CartWidget from "./CartWidget";
+import ItemCount from "./ItemCount";
 
 const NavBar = (props) => {
     console.log(props);
@@ -23,6 +24,7 @@ const NavBar = (props) => {
           <a className="nav-link" href="#">OfertAs! </a>
         </li>
       </ul>
+      <ItemCount/>
       <CartWidget/>
       
       <form className="d-flex">
