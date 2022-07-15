@@ -1,0 +1,77 @@
+import React, { useState, useEffect } from "react";
+import ItemList from "./ItemList";
+
+function ItemListContainer(props) {
+
+    const BasedeDatos = [{
+        "id": 1,
+        "Nombre" : "Smart tv 65 plg",
+        "Marca" : "Philips",
+        "Categoria" : "Electrodomesticos",
+        "Precio" : 109900,
+        "Stock" : 7,
+        "Img" : "/img/ph65.jpg"
+    },{
+        "id": 2,
+        "Nombre" : "Smart tv 50 plg",
+        "Marca" : "Philips",
+        "Categoria" : "Electrodomesticos",
+        "Precio" : 93999,
+        "Stock" : 2,
+        "Img" : "/img/ph50.jpg"
+    },{
+        "id": 3,
+        "Nombre" : "Smart tv 32 plg",
+        "Marca" : "Philips",
+        "Categoria" : "Electrodomesticos",
+        "Precio" : 62199,
+        "Stock" : 5,
+        "Img" : "/img/ph32.jpg"
+    },{
+        "id": 4,
+        "Nombre" : "Smart tv 42 plg",
+        "Marca" : "Philips",
+        "Categoria" : "Electrodomesticos",
+        "Precio" : 77599,
+        "Stock" : 6,
+        "Img" : "/img/ph42.jpg"
+    }]
+
+    let [Items, setItems] = useState();
+
+    useEffect(
+        () => {
+            let promiseItems = new Promise((resolve, reject) => {
+                setTimeout(
+                    () => {
+                        resolve(BasedeDatos);
+                    },
+                    2000);
+            });
+
+            promiseItems.then(
+                (respuesta) => {
+                    setItems(BasedeDatos)
+                }
+            ).catch(
+               (errorMsg) => console.error(errorMsg)
+            )
+        
+        },
+        []
+    )
+
+  
+
+   
+
+
+
+return (
+   <ItemList dataitems ={Items}/>
+);
+}
+
+
+
+export default ItemListContainer;
