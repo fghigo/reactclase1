@@ -12,6 +12,8 @@ function ItemList (props) {
                      <p> {cadaItem.Nombre} </p>
                      <p> {cadaItem.Marca} </p>
                      <p> {cadaItem.Precio} </p>
+                     {cadaItem.Img}
+                     <hr/>
                      </div>
                     );
                     }

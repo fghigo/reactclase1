@@ -10,7 +10,7 @@ function ItemListContainer(props) {
         "Categoria" : "Electrodomesticos",
         "Precio" : 109900,
         "Stock" : 7,
-        "Img" : "/img/ph65.jpg"
+        "Img" :  "https://th.bing.com/th/id/OIP._43PqX6tcL6LdntuC6ajZwHaFu?w=255&h=197&c=7&r=0&o=5&pid=1.7"
     },{
         "id": 2,
         "Nombre" : "Smart tv 50 plg",
@@ -37,7 +37,7 @@ function ItemListContainer(props) {
         "Img" : "/img/ph42.jpg"
     }]
 
-    let [Items, setItems] = useState();
+    let [Items, setItems] = useState([]);
 
     useEffect(
         () => {
@@ -51,7 +51,7 @@ function ItemListContainer(props) {
 
             promiseItems.then(
                 (respuesta) => {
-                    setItems(BasedeDatos)
+                    setItems(BasedeDatos);
                 }
             ).catch(
                (errorMsg) => console.error(errorMsg)

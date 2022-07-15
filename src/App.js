@@ -1,14 +1,15 @@
 import './App.css';
 
 import NavBar from './components/NavBar';
-import ItemListContainer from ".//components/ItemList/ItemListContainer";
+import ItemlistContainer from './components/ItemList/ItemlistContainer'
+ 
 
 function App() {
   const title = "Titulo de Tienda";
    return (
     <>
       <NavBar/>
-      <ItemListContainer/>
+      <ItemlistContainer/>
                 
     </>
   );
