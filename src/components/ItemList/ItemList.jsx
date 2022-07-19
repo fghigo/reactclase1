@@ -1,33 +1,25 @@
 import React from "react";
+import Item from "./Item";
 
-function ItemList (props) {
-    console.log ("Render ItemList", props.dataitems);
+
+
+function ItemList ( {Datos} ) {
+   
 
     return (
             <>
-                <h1> Listado </h1>
-                {props.dataitems.map ((cadaItem) => {
+            <h1>Listado de Productos</h1>
+               { Datos.map (thisBase => {
                     return (
-                     <div key = {cadaItem.id}>
-                     <p> {cadaItem.Nombre} </p>
-                     <p> {cadaItem.Marca} </p>
-                     <p> {cadaItem.Precio} </p>
-                     {cadaItem.Img}
-                     <hr/>
-                     </div>
-                    );
+                     <Item Base={thisBase} key={thisBase.id}/>
+                     );
                     }
                     )
                 }
             </>
             );
                 
-          }
-               
-
-            
-            
-                      
+          }        
        
 
 export default ItemList;
