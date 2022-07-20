@@ -2,7 +2,8 @@
 
 
 
-const BasedeDatos = [{
+const BasedeDatos = [
+    {
     "id": 1,
     "Nombre" : "Smart tv 65 plg",
     "Marca" : "Philips",
@@ -34,7 +35,8 @@ const BasedeDatos = [{
     "Precio" : 77599,
     "Stock" : 6,
     "Img" : "/img/ph42.jpg"
-}]
+},
+];
 
 
 export default BasedeDatos;
