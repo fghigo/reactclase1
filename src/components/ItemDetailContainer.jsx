@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import BasedeDatos from "../components/ItemList/BasedeDatos/BasedeDatos";
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
 
-function ItemDetailContainer() {
-
-   
-    let [producto, setProducto] = useState([]);
-
+const ItemDetailContainer = () => {
+     const {id} = useParams();
+     console.log(id);   
+     const [producto, setProducto] = useState({});
     useEffect(
         () => {
-            let promiseproducto = new Promise((resolve, reject) => {
+            const promiseproducto = new Promise((resolve) => {
                 setTimeout(
                     () => {
                         resolve(BasedeDatos);
@@ -18,14 +18,12 @@ function ItemDetailContainer() {
             });
 
             promiseproducto.then(
-                (respuesta) => {
-                    setProducto(BasedeDatos [0]);
-                }
-                )
-        
-        },
-        []
-    )
+                (respuesta) => {  
+                    const Productos = respuesta.find((Productos) => Productos.id == id );
+                    setProducto(Productos); });              
+                            },               
+                []
+               );
 
 return (
     <div className="flex flex-col text-center">

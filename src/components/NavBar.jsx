@@ -33,7 +33,9 @@ const NavBar = (props) => {
       
       <form className="d-flex">
         <input className="form-control me-2" type="search"  aria-label="Search"/>
-        <button className="btn btn-outline-light" type="submit">BuscAr! </button> 
+        <button className="btn btn-outline-light" type="submit">BuscAr! </button>
+        
+        
       </form>
       </div>
       
