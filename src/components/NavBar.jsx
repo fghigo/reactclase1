@@ -1,5 +1,6 @@
 import CartWidget from "./CartWidget";
 import ItemCount from "./ItemCount";
+import {Link} from "react-router-dom";
 
 const NavBar = (props) => {
     console.log(props);
@@ -7,8 +8,10 @@ const NavBar = (props) => {
 
 <nav className="navbar navbar-expand-xl navbar-dark bg-primary">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">Mi TiendA! </a>
-    
+    <Link className="navbar-brand" to={"/"}>
+      Mi TiendA!
+    </Link>
+   
      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDark" aria-controls="navbarDark" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
     </button>
@@ -25,6 +28,7 @@ const NavBar = (props) => {
         </li>
       </ul>
       <ItemCount/>
+      
       <CartWidget/>
       
       <form className="d-flex">
