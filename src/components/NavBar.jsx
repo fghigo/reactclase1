@@ -1,5 +1,4 @@
 import CartWidget from "./CartWidget";
-import ItemCount from "./ItemCount";
 import {Link} from "react-router-dom";
 
 const NavBar = (props) => {
@@ -18,25 +17,19 @@ const NavBar = (props) => {
     <div className="collapse navbar-collapse show" id="navbarDark">
       <ul className="navbar-nav me-auto mb-2 mb-xl-0">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+          <Link className="nav-link active" aria-current="page" to={"/category/Smart"}>SmA!rt Tv</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Productos</a>
+        <Link className="nav-link active" aria-current="page" to={"/category/celulares"}>CelulA!res</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">OfertAs! </a>
+        <Link className="nav-link active" aria-current="page" to={"*"}>OfertA!s</Link>
         </li>
       </ul>
-      <ItemCount/>
+      
       
       <CartWidget/>
       
-      <form className="d-flex">
-        <input className="form-control me-2" type="search"  aria-label="Search"/>
-        <button className="btn btn-outline-light" type="submit">BuscAr! </button>
-        
-        
-      </form>
       </div>
       
   </div>
