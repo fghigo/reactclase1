@@ -14,6 +14,7 @@ function App() {
        <Route index path='/' element={<ItemlistContainer/>}/>
        <Route path="/category/:title" element={<ItemlistContainer/>}/>
        <Route path="/detail/:id"  element={<ItemDetailContainer/>} />
+       <Route path="/cart" element={<div>Pagina de Cart </div>}/>
        <Route 
         path="*"
         element={
@@ -28,3 +29,6 @@ function App() {
 }
 
 export default App;
+
+
+
