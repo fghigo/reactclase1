@@ -7,7 +7,7 @@ function Item ({Base}){
         <div>
         <h4> {Base.Nombre} </h4>
         <p> {Base.Marca} </p>
-        <Link to ={`detail/${Base.id}`}>
+        <Link to ={`/detail/${Base.id}`}>
         <button className="btn btn-primary">Mas Info</button>
         </Link>
         <br/>
