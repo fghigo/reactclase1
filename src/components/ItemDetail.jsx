@@ -3,14 +3,14 @@
 import React from "react";
 import {useState} from "react";
 import ItemCount from "./ItemCount";
-import {useNavigate} from  'react-router-dom';
+import { Link } from "react-router-dom";
+
 
 function ItemDetail ({producto}){
     const [amount, setAmount] = useState(0);
-    const navigate = useNavigate ();
     const onAdd = (amount) =>
     { setAmount(amount);
-    navigate ("/cart"); };
+    };
     return (
         <div style={{backgroundColor : "aliceblue"}}>
         <h4> {producto.Nombre} </h4>
@@ -27,6 +27,7 @@ function ItemDetail ({producto}){
         {amount == 0 && <ItemCount stock={producto.Stock} initial={0} onAdd={onAdd}/>}
         <hr />
         <br />
+        <Link to="/cart"><button >Finalizar Compra</button></Link>
         </div>
 
     )
