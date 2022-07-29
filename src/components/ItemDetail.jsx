@@ -1,15 +1,18 @@
 
 
 import React from "react";
-import {useState} from "react";
+import {useState, useContext} from "react";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
+import { CartContext } from "./Context/CartContext";
 
 
-function ItemDetail ({producto}){
+function ItemDetail ({producto, setAmountItems}){
+    const {setCartItems} = useContext(CartContext);
     const [amount, setAmount] = useState(0);
     const onAdd = (amount) =>
     { setAmount(amount);
+      setCartItems((prevstate) =>[...prevstate, producto] );  
     };
     return (
         <div style={{backgroundColor : "aliceblue"}}>
@@ -27,7 +30,7 @@ function ItemDetail ({producto}){
         {amount == 0 && <ItemCount stock={producto.Stock} initial={0} onAdd={onAdd}/>}
         <hr />
         <br />
-        <Link to="/cart"><button >Finalizar Compra</button></Link>
+        <Link to="/cart"><button className="btn btn-primary" >Finalizar Compra</button></Link>
         </div>
 
     )

@@ -25,10 +25,10 @@ return (
           value={count}
           type="number"
         />
-    <button onClick={() => contador ("-")}>-</button>
+    <button className="btn btn-secondary" onClick={() => contador ("-")}>-</button>
     {count}
-    <button onClick={() => contador ("+")}>+</button>
-    <button  onClick={() => onAdd(count)} 
+    <button className="btn btn-secondary" onClick={() => contador ("+")}>+</button>
+    <button className="btn btn-primary" onClick={() => onAdd(count)} 
           disabled={count === "" || count <= 0}
           >ComprA!</button>
           </>

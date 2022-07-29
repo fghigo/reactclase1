@@ -3,7 +3,7 @@ import BasedeDatos from "../components/ItemList/BasedeDatos/BasedeDatos";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 
-const ItemDetailContainer = () => {
+const ItemDetailContainer = ({setAmountItems}) => {
      const {id} = useParams();
      console.log(id);   
      const [producto, setProducto] = useState({});
@@ -27,7 +27,7 @@ const ItemDetailContainer = () => {
 
 return (
     <div className="flex flex-col text-center">
-   <ItemDetail producto={producto}/>
+   <ItemDetail setAmountItems={setAmountItems} producto={producto}/>
    </div>
 );
 }

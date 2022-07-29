@@ -2,8 +2,8 @@ import CartWidget from "./CartWidget";
 import {Link} from "react-router-dom";
 
 
-const NavBar = (props) => {
-    console.log(props);
+const NavBar = ({amountItems}) => {
+    
     return (
 
 <nav className="navbar navbar-expand-xl navbar-dark bg-primary">
@@ -29,7 +29,7 @@ const NavBar = (props) => {
       </ul>
       
       
-      <CartWidget/>
+      <CartWidget amountItems={amountItems}/>
       
       </div>
       
