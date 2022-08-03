@@ -30,7 +30,7 @@ function ItemDetail ({producto, setAmountItems}){
         {amount == 0 && <ItemCount stock={producto.Stock} initial={0} onAdd={onAdd}/>}
         <hr />
         <br />
-        <Link to="/cart"><button className="btn btn-primary" >Finalizar Compra</button></Link>
+        <Link to="/Cart"><button className="btn btn-primary" >Finalizar Compra</button></Link>
         </div>
 
     )

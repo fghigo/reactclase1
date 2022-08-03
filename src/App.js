@@ -8,6 +8,7 @@ import Cart from './components/Cart';
 
 
 
+
 function App() {
   const title = "Mi TiendA!";
  
@@ -21,7 +22,7 @@ function App() {
        <Route index path='/' element={<ItemlistContainer/>}/>
        <Route path="/category/:title" element={<ItemlistContainer/>}/>
        <Route path="/detail/:id"  element={<ItemDetailContainer />} />
-       <Route path="/cart" element={<Cart/>}/>
+       <Route path="/Cart" element={<Cart/>}/>
        <Route 
         path="*"
         element={

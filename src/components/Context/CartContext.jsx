@@ -16,8 +16,8 @@ const CartContext = ({children}) => {
         setCartItems([...CartItems, {Item ,quantity}]);
     }
        
-    const isInCart = (Item) => { return
-        CartItems.find ((element)=> element.Item === Item)};
+    const isInCart = (Item) => { return (
+        CartItems.find ((element)=> element.Item === Item))};
 
     
 
@@ -30,11 +30,18 @@ const CartContext = ({children}) => {
 
     const clear = ()=>{setCartItems([])};
 
-    return(
-        <Acontext.Provider value={{CartItems , setCartItems, addItem, howMany, remove, clear, isInCart }}>
+    const total = () => {
+        return CartItems.reduce(
+          (valorAnterior, valorActual) => valorAnterior + valorActual.Item.Precio * valorActual.quantity,
+          0
+        );
+      };
+
+    return (
+        <Acontext.Provider value={{CartItems , setCartItems, total, addItem, howMany, remove, clear, isInCart }}>
             {children}
-        </Acontext.Provider>
-    );
+        </Acontext.Provider>);
+    
 };
 
 
