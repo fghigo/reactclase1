@@ -4,15 +4,15 @@ import React from "react";
 import {useState, useContext} from "react";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
-import { CartContext } from "./Context/CartContext";
+import {Acontext } from "./Context/CartContext";
 
 
 function ItemDetail ({producto, setAmountItems}){
-    const {setCartItems} = useContext(CartContext);
+    const {addItem} = useContext(Acontext);
     const [amount, setAmount] = useState(0);
     const onAdd = (amount) =>
     { setAmount(amount);
-      setCartItems((prevstate) =>[...prevstate, producto] );  
+      addItem (producto, amount);
     };
     return (
         <div style={{backgroundColor : "aliceblue"}}>

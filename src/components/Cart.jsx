@@ -1,12 +1,16 @@
-import React, {useContext} from "react";
-import { CartContext } from "./Context/CartContext";
+import React from "react";
+import { useContext } from "react";
+import { Acontext } from "./Context/CartContext";
+import CartItem from "./CartItem";
 
-const Cart = () => { 
-    const CartItems = useContext(CartContext);
-    
-    return <> { CartItems.map((element)=> element.Item.Nombre)}</>
+const Cart = () => {
+    const {CartItems} = useContext(Acontext);
+    return ( <>{
+        CartItems.map ((element) => (<CartItem Item={element.Item}/>)
+        )}</>
+    );
 };
 
 
 
-export  default Cart;
+export default Cart;
