@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { useContext } from "react";
 import { Acontext } from "./Context/CartContext";
 import { Link } from "react-router-dom";
@@ -31,5 +31,66 @@ const Cart = () => {
 };
 
 
+
+export default Cart;*/
+
+import React, { useContext, useEffect, useState } from "react";
+import { Acontext } from "./Context/CartContext";
+import Item from "./ItemList/Item";
+
+const Cart = () => {
+  const [totalPrice, setTotalPrice] = useState(0);
+  const { cartItems, sendOrder } = useContext(Acontext);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const inputs = document.getElementsByTagName("input");
+    const data = Array.from(inputs).map((input, index) => input.value);
+    sendOrder(totalPrice, { name: data[0], mail: data[1], phone: data[2] });
+    // updateOrder();
+    // multipleUpdates();
+  };
+  useEffect(() => {
+    let total = 0;
+    cartItems.forEach(({ producto, quantity }) => {
+      total += parseInt(producto.Precio) * quantity;
+    });
+    setTotalPrice(total);
+  }, [cartItems]);
+  return (
+    <>
+      <ul>
+         {cartItems.map (({ producto, quantity }) => (
+          <>
+            <div key={producto.Id} className="card" style={{ width: "20rem" }}>
+              <img
+                className="card-img-top"
+                src={producto.Img}
+                alt="Card image cap"
+              />
+              <div className="card-body d-flex flex-column justify-content-center">
+                <h5 className="card-title">{producto.Nombre}</h5>
+                <p className="card-text">{`${producto.Stock} units available!`}</p>
+             
+              </div>
+            </div>
+          </>
+        ))}
+      </ul>
+      <h1 className="bg-primary">{`El totA!l es: $${totalPrice}`}</h1>
+      <form onSubmit={handleSubmit}>
+        <input type={"text"} />
+        <input type={"email"} />
+        <input type={"tel"} />
+        <button
+           onClick={() => sendOrder(totalPrice)}
+          type="submit"
+          className="btn btn-info"
+        >
+          Finalizar comprA!
+        </button>
+      </form>
+    </>
+  );
+};
 
 export default Cart;

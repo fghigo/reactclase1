@@ -1,33 +1,27 @@
 import React, { useState, useEffect } from "react";
-import BasedeDatos from "../components/ItemList/BasedeDatos/BasedeDatos";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
-const ItemDetailContainer = ({setAmountItems}) => {
-     const {id} = useParams();
-    
-     const [producto, setProducto] = useState({});
-    useEffect(
-        () => {
-            const promiseproducto = new Promise((resolve) => {
-                setTimeout(
-                    () => {
-                        resolve(BasedeDatos);
-                    },
-                    2000);
-            });
+const ItemDetailContainer = () => {
+  const [producto, setProducto] = useState({});
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
 
-            promiseproducto.then(
-                (respuesta) => {  
-                    const Productos = respuesta.find((Productos) => Productos.id == id );
-                    setProducto(Productos); });              
-                            },               
-                []
-               );
+  useEffect(() => {
+    setLoading(true);
+    const db = getFirestore();
+    const itemDoc = doc(db, "items", id);
+    getDoc(itemDoc).then((snapshot) => {
+      setProducto({ ...snapshot.data(), id: snapshot.id });
+      setLoading(false);
+    });
+  }, [id]);
+        
 
 return (
     <div className="flex flex-col text-center">
-   <ItemDetail setAmountItems={setAmountItems} producto={producto}/>
+   <ItemDetail producto={producto}/>
    </div>
 );
 }
