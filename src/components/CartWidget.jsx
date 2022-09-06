@@ -6,7 +6,7 @@ import { Acontext } from "./Context/CartContext";
 
 
 const CartWidget = () => {
-       const CartItems = useContext(Acontext);
+       const cartItems = useContext(Acontext);
    
 
   

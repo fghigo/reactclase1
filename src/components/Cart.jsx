@@ -1,38 +1,3 @@
-/*import React from "react";
-import { useContext } from "react";
-import { Acontext } from "./Context/CartContext";
-import { Link } from "react-router-dom";
-import CartItem from "./CartItem";
-
-const Cart = () => {
-    const {CartItems, remove, total, clear} = useContext(Acontext);
-    const Totl = total();
-    return ( 
-        <>
-      {CartItems.length === 0 ? (
-        <>
-          Agrega productos!
-          <Link to={"/"}>Volver</Link>
-        </>
-      ) : (
-    
-        <>{       
-        CartItems.map ((producto) => (<CartItem Item={producto.Item} quantity={producto.quantity} remove={remove}/>)
-         )}
-
-         <button className="btn btn-primary rounded-lg"  onClick={()=>clear()}>Vaciar el carrito?</button>
-
-        <h3>Total de su compra: {Totl} </h3>
-         
-         </>
-      )};
-      </>
-    );
-};
-
-
-
-export default Cart;*/
 
 import React, { useContext, useEffect, useState } from "react";
 import { Acontext } from "./Context/CartContext";
@@ -41,15 +6,14 @@ import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
-  const { cartItems, sendOrder, remove, total, clear } = useContext(Acontext);
+  const { cartItems, sendOrder, remove, clear } = useContext(Acontext);
   const handleSubmit = (e) => {
     e.preventDefault();
     const inputs = document.getElementsByTagName("input");
     const data = Array.from(inputs).map((input, index) => input.value);
     console.log (data);
     sendOrder(totalPrice, { name: data[0], mail: data[1], phone: data[2] });
-    // updateOrder();
-    // multipleUpdates();
+    
   };
   useEffect(() => {
     let total = 0;
@@ -100,15 +64,15 @@ const Cart = () => {
         <input type={"text"} />
         <input type={"email"} />
         <input type={"tel"} />
-        <button
+        <button 
            onClick={() => sendOrder(totalPrice)}
            type="submit"
            className="btn btn-info"
            >
-          Finalizar comprA!
-        </button>
+            Finalizar comprA!                   
+        </button>        
       </form>
-    </>  
+      </>  
     )
 };
 
