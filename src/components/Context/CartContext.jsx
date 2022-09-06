@@ -1,72 +1,3 @@
-/*import React, {createContext, useState} from "react";
-import {
-  addDoc,
-  collection,
-  getFirestore,
-  writeBatch,
-  query,
-  where,
-  getDocs,
-  documentId,
-} from "firebase/firestore";
-
-export const Acontext = createContext();
-
-const CartContext = ({children}) => {
-    const [CartItems , setCartItems] = useState([]);
-
-    const sendOrder = () =>{
-      const db = getFirestore();
-      const orderCollection = collection (db, "orders");
-      const order = {items : CartItems,}
-      addDoc(orderCollection, order).then((res) => console.log (res.id))
-    }
-
-
-
-
-    const addItem= (Item ,quantity)=>{
-        const newItem = isInCart(Item);
-        if (newItem){
-            quantity= quantity + newItem.quantity;
-            setCartItems(CartItems.splice(CartItems.findIndex((element)=> element.Item.id === Item.id),
-             1));
-        }
-        setCartItems([...CartItems, {Item ,quantity}]);
-    }
-       
-    const isInCart = (Item) => { return (
-        CartItems.find ((element)=> element.Item === Item))};
-
-    
-
-
-    const howMany = ()=>{return CartItems.length};
-
-    const remove = (itemId)=>{
-      setCartItems(CartItems.filter((element)=> element.Item.id !== itemId))
-    };
-
-    const clear = ()=>{setCartItems([])};
-
-    const total = () => {
-        return CartItems.reduce(
-          (valorAnterior, valorActual) => valorAnterior + valorActual.Item.Precio * valorActual.quantity,
-          0
-        );
-      };
-
-    return (
-        <Acontext.Provider value={{CartItems , setCartItems, total, addItem, howMany, remove, clear, isInCart }}>
-            {children}
-        </Acontext.Provider>);
-    
-};
-
-
-
-export default CartContext;*/
-
 import React, { createContext, useState } from "react";
 import {
   addDoc,
@@ -85,16 +16,55 @@ const CartContext = ({children}) => {
   const [cartItems , setCartItems] = useState([]);
   const howMany = ()=>{return cartItems.length};
 
-  const sendOrder = async (totalPrice, buyerData) => {
+  const sendOrder =(totalPrice, buyerData) => {
     const db = getFirestore();
-    const orderCollection = collection(db, "orders");
+    const orderCollection = collection(db, "orden");
     const order = {
       items: cartItems,
       total: totalPrice,
       buyer: buyerData,
+    }
+    addDoc(orderCollection, order).then(res => console.log(res.id));};
+
+   
+
+
+   
+   
+
+
+     const remove = (itemId)=>{
+      setCartItems(cartItems.filter((element)=> element.Item.id !== itemId))
     };
+
+    const clear = ()=>{setCartItems([])};
+
+    const total = () => {
+        return cartItems.reduce(
+          (valorAnterior, valorActual) => valorAnterior + valorActual.Item.Precio * valorActual.quantity,
+          0
+        );
+      };
+
+    return (
+        <Acontext.Provider value={{cartItems , setCartItems, sendOrder, howMany, remove, clear}}>
+            {children}
+        </Acontext.Provider>);
+    
+};
+
+
+
+export default CartContext;
+
+
+
+    
+    /*  total: totalPrice,
+      buyer: buyerData,
+   
     const batch = writeBatch(db);
-    const idList = cartItems.map((producto) => producto.items.Id);
+    const idList = cartItems.map((producto) => producto.item.id);
     const withoutStock = [];
     const collectionRef = collection(db, "items");
     const docsResponse = await getDocs(
@@ -128,6 +98,6 @@ const CartContext = ({children}) => {
         {children}
     </Acontext.Provider>);
   
-};
 
-export default CartContext;
+
+export default CartContext;*/
